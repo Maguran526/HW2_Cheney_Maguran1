@@ -208,13 +208,13 @@ some of the other variables. Summarize your findings in a few short paragraphs.
 The lower peninsula has higher Total Population median, Q3, and max values. The spread is significantly larger for the LP, however, the minimums are pretty similar. The UP has many more Public workers than the LP, in fact the median percentage of the UP is approximately the maximum percentage of the LP. Office work is not very different in regards to median, however the LP has a little wider spread than the UP, with a higher max. Unemployment is not drastically different between peninsulas. Income per capita is much higher in the LP than the UP.
 
 ```{r boxplots}
-ggplot(county_MI) + geom_boxplot(aes(x = peninsula, y = TotalPop))
-ggplot(county_MI) + geom_boxplot(aes(x =peninsula, y = PublicWork)) 
-ggplot(county_MI) + geom_boxplot(aes(x = peninsula, y = Office)) 
-ggplot(county_MI) + geom_boxplot(aes(x = peninsula, y = Unemployment)) 
-ggplot(county_MI) + geom_boxplot(aes(x = peninsula, y = Carpool)) 
-ggplot(county_MI) + geom_boxplot(aes(x = peninsula, y = Poverty)) 
-ggplot(county_MI) + geom_boxplot(aes(x = peninsula, y = IncomePerCap)) 
+ggplot(county_MI) + geom_boxplot(aes(x = peninsula, y = TotalPop)) + ggtitle("Boxplot for Total Population")
+ggplot(county_MI) + geom_boxplot(aes(x =peninsula, y = PublicWork)) +ggtitle("Boxplot for Public Work")
+ggplot(county_MI) + geom_boxplot(aes(x = peninsula, y = Office)) +ggtitle("Boxplot for Office Work")
+ggplot(county_MI) + geom_boxplot(aes(x = peninsula, y = Unemployment)) +ggtitle("Boxplot for Unemployment")
+ggplot(county_MI) + geom_boxplot(aes(x = peninsula, y = Carpool)) +ggtitle("Boxplot for Carpool")
+ggplot(county_MI) + geom_boxplot(aes(x = peninsula, y = Poverty)) +ggtitle("Boxplot for Poverty")
+ggplot(county_MI) + geom_boxplot(aes(x = peninsula, y = IncomePerCap)) +ggtitle("Boxplot for Income Per Cap")
 
 ```
 
@@ -278,13 +278,13 @@ Though we did find fairly similar results, some were different. For example, it 
 ```{r xy_faceted_peninsula}
 
 ggplot(county_MI) + geom_point(aes(y = Income, x = Professional)) +
-  facet_wrap(~peninsula)
+  facet_wrap(~peninsula) +ggtitle("Income vs Professional Work")
 ggplot(county_MI) + geom_point(aes(x = Professional, y = MeanCommute)) +
-  facet_wrap(~peninsula)
+  facet_wrap(~peninsula) +ggtitle("Professional Work vs Mean Commute to Work")
 ggplot(county_MI) + geom_point(aes(x = Poverty, y = Carpool)) +
-  facet_wrap(~peninsula)
+  facet_wrap(~peninsula) +ggtitle("Poverty vs Carpool Percentage")
 ggplot(county_MI) + geom_point(aes(x = Unemployment, y = Poverty)) +
-  facet_wrap(~peninsula)
+  facet_wrap(~peninsula) +ggtitle("Unemployment Rate vs Poverty ")
 
 ```
 
