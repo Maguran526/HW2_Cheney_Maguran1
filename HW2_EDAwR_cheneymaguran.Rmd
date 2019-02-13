@@ -318,21 +318,19 @@ control, or others.
 ```{r}
 
 
-ggplot(county_df) + geom_point(aes(x = Income, y = MeanCommute)) +
-  facet_wrap(~Region) +ggtitle("Income vs Mean Commute")
-ggplot(county_df) + geom_histogram(aes(x=Income),fill = "green") + xlab("Region") + ggtitle("Histogram of Median Income by Region") +facet_wrap(~Division) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+ggplot(county_df,aes(x = Income, y = MeanCommute)) + geom_point() + geom_smooth(method = "lm") + ggtitle("Income vs Mean Commute") + facet_wrap(~Region)
 
-ggplot(county_df) + geom_histogram(aes(x=Black),fill = "green") + xlab("Region") + ggtitle("Histogram of Percentage of African Americans by Region") +facet_wrap(~Region) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+ggplot(county_df) + geom_histogram(aes(x=Income, y= ..density..),fill = "aquamarine") + geom_density(aes(x = Income)) + xlab("Region") + ggtitle("Histogram of Median Income by Region") +facet_wrap(~Division) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggplot(county_df) + geom_histogram(aes(x=Hispanic),fill = "green") + xlab("Region") + ggtitle("Histogram of Percentage of Hispanics by Region") +facet_wrap(~Region) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+ggplot(county_df) + geom_histogram(aes(x=Black),fill = "dark red") + xlab("Region") + ggtitle("Histogram of Percentage of African Americans by Region") +facet_wrap(~Region) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggplot(county_df[county_df$Unemployment < 25, ]) + geom_histogram(aes(x=Unemployment, fill = Division), colour = "blue") + xlab("Unemployment Rate") + ggtitle("Histogram of Percentage of Hispanics by Region") +facet_wrap(~Region) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+ggplot(county_df) + geom_histogram(aes(x=Hispanic),fill = "#FF4500") + xlab("Region") + ggtitle("Histogram of Percentage of Hispanics by Region") +facet_wrap(~Region) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggplot(county_df) + geom_histogram(aes(x=State, stat = "count",fill = "green")) + xlab("Unemployment%") + ggtitle("Histogram of Percentage of Unemployment by Region") + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+ggplot(county_df[county_df$Unemployment < 25, ]) + geom_histogram(aes(x=Unemployment, fill = Division), colour = "blue") + xlab("Unemployment Rate") + ggtitle("Histogram of Unemployment by Region") +facet_wrap(~Region) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggplot(county_df[county_df$TotalPop < 1500000,]) + geom_histogram(aes(x = TotalPop, fill = Region), colour ="black") + ggtitle("Distribution of population for US counties") + ylab("Number of counties") + xlab("Total Population")
+ggplot(county_df[county_df$TotalPop < 1000000,]) + geom_histogram(aes(x = TotalPop, fill = Region), colour ="black") + ggtitle("Distribution of population for US counties< 1 mil.") + ylab("Number of counties") + xlab("Total Population")
 
-ggplot(county_df) + geom_histogram(aes(x = Income, fill = Region), colour ="black") + ggtitle("Histogram of Income for US counties") + ylab("Number of counties") + xlab("Total Population") 
+ggplot(county_df) + geom_histogram(aes(x = Income, fill = Region), colour ="black") + ggtitle("Histogram of Income for US counties") + ylab("Number of counties") + xlab("Medican Income") 
 
 ggplot(county_df) + geom_boxplot(aes(x=reorder(State, Income ,FUN = median), y=Income)) + ggtitle("Income vs State") + ylab("Median Income") + theme(axis.text.x = element_text(angle = 90, hjust = 1))+ xlab("State")
 
